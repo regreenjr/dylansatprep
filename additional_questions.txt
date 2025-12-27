@@ -1,0 +1,9 @@
+I'm going to generate the remaining questions in a more efficient format, then add them all at once.
+
+This file is temporary - tracking question generation progress.
+
+Target: 500 total questions (100 per category)
+Current: ~50 total
+Need: ~450 more
+
+Strategy: Generate all questions in batches, then insert into questions.ts
