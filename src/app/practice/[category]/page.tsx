@@ -27,7 +27,10 @@ export default function PracticePage({ params }: PracticePageProps) {
   useEffect(() => {
     // Get and shuffle questions for this category
     const qs = getQuestionsByCategory(categoryId);
-    setCategoryQuestions(shuffleQuestions(qs));
+    const shuffled = shuffleQuestions(qs);
+    // Limit to 10 questions per session
+    const limitedQuestions = shuffled.slice(0, 10);
+    setCategoryQuestions(limitedQuestions);
     setIsLoading(false);
   }, [categoryId]);
 
@@ -66,7 +69,11 @@ export default function PracticePage({ params }: PracticePageProps) {
   };
 
   const handleRetry = () => {
-    setCategoryQuestions(shuffleQuestions(getQuestionsByCategory(categoryId)));
+    const qs = getQuestionsByCategory(categoryId);
+    const shuffled = shuffleQuestions(qs);
+    // Get a fresh set of 10 random questions
+    const limitedQuestions = shuffled.slice(0, 10);
+    setCategoryQuestions(limitedQuestions);
     setCurrentQuestionIndex(0);
     setCorrectAnswers(0);
     setIsComplete(false);
